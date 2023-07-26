@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<main>
+	<h1 class="d-flex justify-content-center mt-2">Formulaire de contact</h1>
+	<hr class="w-75 mx-auto mt-0 mb-3">
+		<div class="d-flex justify-content-center form-container mt-5 mb-5 p-3 rounded mnb">
+			{{ form_start(form) }}
+			<div class="my-custom-class-for-errors">
+				{{ form_errors(form) }}
+			</div>
+			<div class="row text-center">
+				{{ form_label(form.objet, "Objet :") }}
+				{{ form_widget(form.objet, {'attr': {'class': 'btn-light form-control mt-1'} }) }}
+				{{ form_errors(form.objet) }}
+			</div>
+			<div class="row text-center">
+				{{ form_label(form.email, "Mail :") }}
+				{{ form_widget(form.email, {'attr': {'class': 'btn-light form-control mt-1'} }) }}
+				{{ form_errors(form.email) }}
+			</div>
+			<div class="row text-center mb-3">
+				{{ form_label(form.message, "Message :") }}
+				{{ form_widget(form.message, {'attr': {'class': 'btn-light form-control mt-1'} }) }}
+				{{ form_errors(form.message) }}
+			</div>
+			<div class="row text-center mb-3">
+				{{ form_widget(form.save, {'attr': {'class': 'btn-light text-center'} }) }}
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</main>
+{% endblock %}

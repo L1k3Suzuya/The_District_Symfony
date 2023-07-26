@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<h1 class="d-flex justify-content-center mt-2">Inscription</h1>
+	<hr class="w-75 mx-auto mt-0 mb-3">
+	<div class="d-flex justify-content-center form-container mt-3 mb-5 p-3 rounded mnb">
+
+		{{ form_start(registrationForm) }}
+		<div class="row text-center">
+			{{ form_label(registrationForm.email, "Votre Email :") }}
+			{{ form_widget(registrationForm.email, {'attr': {'class': 'btn-light form-control mt-1'} }) }}
+			{{ form_errors(registrationForm.email) }}
+		</div>
+
+		<div class="row text-center">
+			{{ form_label(registrationForm.plainPassword, "Votre mot de passe :") }}
+			{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'btn-light form-control mt-1'} }) }}
+			{{ form_errors(registrationForm.plainPassword) }}
+		</div>
+
+        <div class="text-center">
+        {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions d'utilisation ") }}
+		{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mt-4 mb-4'} })  }}
+        </div>
+
+		<div class="row text-center">
+			<button type="submit" class="btn btn-light">Inscription</button>
+		</div>
+		{{ form_end(registrationForm) }}
+	</div>
+{% endblock %}
